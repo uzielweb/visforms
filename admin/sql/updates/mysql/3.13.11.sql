@@ -1,0 +1,2 @@
+UPDATE `#__visfields` SET uniquevaluesonly = 0 WHERE typefield in ('selectsql', 'radiosql', 'multicheckboxsql');
+UPDATE `#__visfields` SET isfilterfield = 1 WHERE typefield in ('select', 'radio', 'multicheckbox');

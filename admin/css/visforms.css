@@ -1,0 +1,241 @@
+#vfcpanel .cpanel a {
+	background-color: white;
+	background-position: -30px center;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.1) inset, 5px 5px 10px rgba(0, 0, 0, 0.05) inset;
+	color: #565656;
+	display: block;
+	float: left;
+	height: 87px;
+	padding: 7px 5px 5px;
+	text-decoration: none;
+	transition-property: none;
+	vertical-align: middle;
+	width: 98px;
+	margin-right: 15px;
+	margin-bottom: 15px;
+	text-align: center;
+}
+#vfcpanel .cpanel a:hover, #vfcpanel .cpanel a:focus, .akeeba-bootstrap #cpanel div.icon a:focus, #vfcpanel .cpanel a:active {
+	background-position: 0 center;
+	border-bottom-left-radius: inherit;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1) inset, -5px -5px 10px rgba(0, 0, 0, 0.05) inset;
+	position: relative;
+	z-index: 10;
+}
+
+#vfcpanel .cpanel a i {
+	font-size: 25px;
+	height: 25px;
+	line-height: 25px;
+	margin-top: 10px;
+	width: 25px;
+	color:  #2d6ca2; /*#10223e; #6989f2;*/
+}
+
+#vfcpanel .cpanel a span {
+	display: block;
+	margin-top: 15px;
+}
+
+.alert-block h3 {
+	margin-top: 0;
+}
+
+.accordion-heading {
+	font-weight: bold;
+}
+
+.img-bordered {
+	border: 1px solid grey;
+	width: 24px;
+	margin-right: 8px;
+}
+
+@font-face {
+	font-family: 'IcoMoon';
+	src: url('../../../../media/jui/fonts/IcoMoon.eot');
+	src: url('../../../../media/jui/fonts/IcoMoon.eot?#iefix') format('embedded-opentype'), url('../../../../media/jui/fonts/IcoMoon.woff') format('woff'), url('../../../../media/jui/fonts/IcoMoon.ttf') format('truetype'), url('../../../../media/jui/fonts/IcoMoon.svg#IcoMoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[data-icon]:before {
+	font-family: 'IcoMoon';
+	content: attr(data-icon);
+	speak: none;
+}
+[class^="icon-"],
+[class*=" icon-"] {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	*margin-right: .3em;
+	line-height: 14px;
+}
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+	font-family: 'IcoMoon';
+	font-style: normal;
+	speak: none;
+}
+[class^="icon-"].disabled,
+[class*=" icon-"].disabled {
+	font-weight: normal;
+}
+.icon-back:before {
+	content:"\e00c";
+}
+
+.icon-export:before {
+	content:"\e021";
+	content:"\e016";
+}
+
+.icon-forms:before {
+	content:"\59";
+}
+
+.icon-editcss:before {
+	content:"\2c";
+}
+
+/*Fonts*/
+@font-face {
+	font-family: 'visIcon';
+	src:url('../../../../media/com_visforms/fonts/visIcon.eot?-7x6gp7');
+	src:url('../../../../media/com_visforms/fonts/visIcon.eot?#iefix-7x6gp7') format('embedded-opentype'),
+	url('../../../../media/com_visforms/fonts/visIcon.woff?-7x6gp7') format('woff'),
+	url('../../../../media/com_visforms/fonts/visIcon.ttf?-7x6gp7') format('truetype'),
+	url('../../../../media/com_visforms/fonts/visIcon.svg?-7x6gp7#visIcon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+[class^="visicon-"], [class*=" visicon-"] {
+	font-family: 'visIcon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+[class^="visicon-"],
+[class*=" visicon-"] {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	*margin-right: .3em;
+	line-height: 14px;
+}
+[class^="visicon-"]:before,
+[class*=" visicon-"]:before {
+	font-family: 'visIcon';
+	font-style: normal;
+	speak: none;
+}
+[class^="visicon-"].disabled,
+[class*=" visicon-"].disabled {
+	font-weight: normal;
+}
+
+.visicon-arrow-up-3:before {
+	content: "\e600";
+}
+.visicon-arrow-down-3:before {
+	content: "\e601";
+}
+.visicon-edit:before {
+	content: "\e602";
+}
+.visicon-calendar:before {
+	content: "\e603";
+}
+.visicon-download:before {
+	content: "\e604";
+}
+.visicon-eye:before {
+	content: "\e9ce";
+}
+#jform_defaultvalue_f_radio_default-lbl,
+#jform_defaultvalue_f_select_default-lbl,
+#jform_defaultvalue_f_multicheckbox_default-lbl{
+	display: inline-block;
+
+	min-width: 0;
+}
+
+.itemMove {
+	cursor: pointer;
+}
+
+.ui-sortable .hiddenSortable {
+	display: none;
+}
+
+.notSortable .hiddenNotSortable {
+	display: none;
+}
+
+/* pdf */
+.sql-edit-controls {}
+.sql-edit-controls > * { display: inline-block; }
+.sql-edit-controls > button { margin-left: 15px; margin-right: 15px; }
+
+/* wait donut */
+
+.div_ajax-call-wait {
+	display: inline-block;
+	width: 30px;
+	vertical-align: middle;
+	height: 30px;
+}
+
+.icon_ajax-call-wait {
+	vertical-align: bottom;
+	background: url("../images/spinner.gif");
+	background-repeat: no-repeat;
+	background-position: center center;
+	display: block;
+	width: 30px;
+	height: 30px;
+}
+
+/* Craator CSS */
+/* Reset Button */
+.view-viscreator #toolbar-unpublish {
+	margin-left: 45px;
+}
+.circledNumberText {font-weight: bold;}
+@media (max-width: 1200px) {
+	.row-fluid [class*=span].break-1200 {
+		float: none;
+		width: 100%;
+		margin-left: 0;
+	}
+}
+
+a.remove {font-weight: lighter;}
+a.remove:hover {color: red;}
+div.creator-typefield {
+	margin-bottom: 0 !important;
+}
+.creator-typefield div.controls {
+	margin-left: 5px;
+}
+div.btns-create-form {
+	margin-bottom: 15px;
+}
+
+select.invalid {
+	border: 1px solid #9d261d;
+	background: #f2dede;
+}

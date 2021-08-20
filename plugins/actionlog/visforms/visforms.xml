@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension version="3.9" type="plugin" group="actionlog" method="upgrade">
+	<name>PLG_ACTIONLOG_VISFORMS</name>
+	<author>Aicha Vack</author>
+	<creationDate>March 2020</creationDate>
+	<copyright>Copyright (C) vi-solutions. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>contact@vi-solutions.de</authorEmail>
+	<authorUrl>vi-solutions.de</authorUrl>
+	<version>1.0.1</version>
+	<description>PLG_ACTIONLOG_VISFORMS_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="visforms">visforms.php</filename>
+		<filename>index.html</filename>
+		<folder>language</folder>
+	</files>
+</extension>

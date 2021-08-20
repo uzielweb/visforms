@@ -1,0 +1,1556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="form_title">
+        <field name="name" type="text" label="COM_VISFORMS_NAME"
+               description="COM_VISFORMS_FORM_NAME_DESC" class="inputbox" size="50" maxlength="50"
+               required="true"/>
+
+        <field name="title" type="text" label="COM_VISFORMS_TITLE"
+               description="COM_VISFORMS_TITLE_DESC" class="inputbox input-xxlarge input-large-text" size="50"
+               maxlength="250" required="true"/>
+    </fieldset>
+    <fieldset name="visform-basic-details" label="COM_VISFORMS_FIELDSET_BASIC">
+        <field name="asset_id" type="hidden" filter="unset"/>
+        <field name="fdeexists" type="aef" feature="0" default="0"
+               addfieldpath="components/com_visforms/models/fields"/>
+        <field name="id" type="text" class="readonly" label="JGLOBAL_FIELD_ID_LABEL"
+               description="JGLOBAL_FIELD_ID_DESC" size="10" default="0"
+               readonly="true"/>
+
+        <field name="published" type="list" label="JSTATUS"
+               description="JFIELD_PUBLISHED_DESC" class="inputbox"
+               filter="intval" size="1" default="1"
+        >
+            <option value="1">
+                JPUBLISHED
+            </option>
+            <option value="0">
+                JUNPUBLISHED
+            </option>
+        </field>
+
+        <field name="access" type="accesslevel" label="JFIELD_ACCESS_LABEL" description="JFIELD_ACCESS_DESC"
+               class="inputbox" size="1"/>
+
+        <field name="language" type="contentlanguage" label="JFIELD_LANGUAGE_LABEL"
+               description="COM_VISFORMS_FIELD_LANGUAGE_DESC" class="inputbox" default="*"
+        >
+            <option value="*">JALL</option>
+        </field>
+
+        <field name="created" type="calendar" label="COM_VISFORMS_FIELD_CREATED_LABEL"
+               description="COM_VISFORMS_FIELD_CREATED_DESC" class="inputbox" size="22"
+               format="%Y-%m-%d %H:%M:%S" filter="user_utc"/>
+
+        <field name="created_by" type="user"
+               label="COM_VISFORMS_FIELD_CREATED_BY_LABEL" description="COM_VISFORMS_FIELD_CREATED_BY_DESC"/>
+        <field name="hits" type="text" label="JGLOBAL_HITS"
+               description="COM_VISFORMS_FIELD_HITS_DESC" class="readonly" size="6"
+               readonly="true" filter="unset"/>
+        <field name="redirecttoeditview" type="radio"
+               class="btn-group btn-group-yesno switcher"
+               label="COM_VISFORMS_FRONTEND_EDIT_REDIRECT_TO_EDIT_VIEW"
+               description="COM_VISFORMS_FRONTEND_EDIT_REDIRECT_TO_EDIT_VIEW_DESC"
+               default="0" showon="fdeexists:1"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field name="description" type="editor" class="inputbox"
+               label="COM_VISFORMS_DESCRIPTION" description="COM_VISFORMS_DESCRIPTION_DESC" buttons="true"
+               hide="module,pagebreak,visformfields,readmore" editor="tinyMCE|none"
+               filter="JComponentHelper::filterText"/>
+
+
+        <field name="checked_out" type="hidden" filter="unset"/>
+
+        <field name="checked_out_time" type="hidden" filter="unset"/>
+
+    </fieldset>
+    <fieldset name="visform-result-details" label="COM_VISFORMS_FIELDSET_RESULT">
+        <field name="saveresult" type="radio"
+               class="btn-group btn-group-yesno switcher"
+               label="COM_VISFORMS_SAVE_RESULT"
+               description="COM_VISFORMS_SAVE_RESULT_DESC"
+               default="0"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <fields name="savesettings">
+            <field name="subexists" type="aef" feature="12" default="0"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field name="save_exclude_ip" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_SAVE_EXCLUDE_IP"
+                   description="COM_VISFORMS_SAVE_EXCLUDE_IP_DESCR"
+                   default="0"
+                   showon="subexists:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+        </fields>
+        <field name="textresult" type="editor" class="inputbox"
+               label="COM_VISFORMS_TEXT_RESULT" description="COM_VISFORMS_TEXT_RESULT_DESC" buttons="true"
+               hide="module,pagebreak,readmore" editor="tinyMCE|none" filter="JComponentHelper::filterText"/>
+        <field name="redirecturl" class="longfield inputbox" type="text" label="COM_VISFORMS_REDIRECT_URL"
+               description="COM_VISFORMS_REDIRECT_URL_DESC" maxlength="250"/>
+        <fields name="subredirectsettings">
+            <field name="subexists" type="aef" feature="12" default="0"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field name="allow_content_plugin_custom_redirect" type="radio"
+                   class="btn-group btn-group-yesno"
+                   label="COM_VISFORMS_ALLOW_CONTENT_PLUGIN_CUSTOM_REDIRECT"
+                   description="COM_VISFORMS_ALLOW_CONTENT_PLUGIN_CUSTOM_REDIRECT_DESC"
+                   default="0"
+                   showon="subexists:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="redirect_to_previous_page" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_REDIRECT_TO_PREVIOUS_PAGE"
+                   description="COM_VISFORMS_REDIRECT_TO_PREVIOUS_PAGE_DESCR"
+                   default="0"
+                   showon="subexists:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="message_position" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_MESSAGE_INSTEAD_OF_FORM"
+                   description="COM_VISFORMS_MESSAGE_INSTEAD_OF_FORM_DESC"
+                   default="0"
+                   showon="subexists:1[AND]redirect_to_previous_page:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="textresult_previouspage_link" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_TEXTRESULT_PREVIOUS_PAGE_LINK"
+                   description="COM_VISFORMS_TEXTRESULT_PREVIOUS_PAGE_LINK_DESCR"
+                   default="0"
+                   showon="subexists:1[AND]redirect_to_previous_page:0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="return_link_text" type="text" class="inputbox"
+                   label="COM_VISFORMS_LINK_TEXT" default="" size="50" maxlength="250"
+                   showon="subexists:1[AND]redirect_to_previous_page:0" />
+            <field name="display_pdf_download_link" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_TEXT_RESULT_DISPLAY_PDF_DOWNLOAD_LINK"
+                   description="COM_VISFORMS_TEXTRESULT_DISPLAY_PDF_DOWNLOAD_DESCR"
+                   default="0"
+                   showon="subexists:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="pdf_download_link_template" type="selectfromdb" label="COM_VISFORMS_TEXT_RESULT_PDF_TEMPLATE"
+                   description="COM_VISFORMS_TEXT_RESULT_PDF_TEMPLATE_DESC" table="#__vispdf" where="published = 1" singleform="true"
+                   showon="subexists:1[AND]display_pdf_download_link:1">
+                <option value="">COM_VISFORMS_SELECT_PDF_TEMPLATE</option>
+            </field>
+    </fields>
+    </fieldset>
+    <fieldset name="visform-email-details" label="COM_VISFORMS_FIELDSET_EMAIL">
+        <field type="spacer" name="emailresultspacer" class="text"
+               label="COM_VISFORMS_EMAIL_RESULT_LABEL"
+        />
+        <field name="emailresult" type="radio"
+               class="btn-group btn-group-yesno switcher"
+               label="COM_VISFORMS_EMAIL_RESULT"
+               description="COM_VISFORMS_EMAIL_RESULT_DESC"
+               default="0"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field name="emailfrom" class="longfield inputbox" type="email" label="COM_VISFORMS_EMAIL_FROM"
+               description="COM_VISFORMS_EMAIL_FROM_DESC" size="50" maxlength="250"/>
+
+        <field name="emailfromname" class="longfield inputbox" type="text" label="COM_VISFORMS_EMAIL_FROM_NAME"
+               description="COM_VISFORMS_EMAIL_FROM_NAME_DESC" size="50" maxlength="250"/>
+
+        <field name="emailto" class="longfield inputbox" type="email" label="COM_VISFORMS_EMAIL_TO"
+               description="COM_VISFORMS_EMAIL_TO_RESULT_DESC" size="50" maxlength="250"/>
+
+        <field name="emailcc" class="longfield inputbox" type="text" label="COM_VISFORMS_EMAIL_CC"
+               description="COM_VISFORMS_EMAIL_CC_DESC" size="50" maxlength="250"/>
+
+        <field name="emailbcc" class="longfield inputbox" type="text" label="COM_VISFORMS_EMAIL_BCC"
+               description="COM_VISFORMS_EMAIL_BCC_DESC" size="50" maxlength="250"/>
+
+        <field name="subject" class="longfield inputbox" type="text" label="COM_VISFORMS_EMAIL_MAIL_SUBJECT"
+               description="COM_VISFORMS_EMAIL_MAIL_SUBJECT_DESC" size="50" maxlength="250"/>
+        <field name="emailresulttext" type="editor" class="inputbox" buttons="true" hide="module,pagebreak,readmore"
+               editor="tinyMCE|none"
+               label="COM_VISFORMS_EMAIL_RESULT_TEXT" description="COM_VISFORMS_EMAIL_RESULT_TEXT_DESC"
+               filter="JComponentHelper::filterText"/>
+        <fields name="emailresultsettings">
+            <field name="emailreshascal" type="aef" feature="10" default="0"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field name="emailresultincfield" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_DATA"
+                   description="COM_VISFORMS_INCLUDE_DATA_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="emailresulthideemptyfields" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_HIDE_EMPTY_FIELDS_LABEL"
+                   description="COM_VISFORMS_HIDE_EMPTY_FIELDS_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="emailresultemptycaliszero" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EMPTY_CAL_IS_ZERO_FIELDS_LABEL"
+                   description="COM_VISFORMS_EMPTY_CAL_IS_ZERO_FIELDS_DESC"
+                   default="0"
+                   showon="emailreshascal:1[AND]emailresulthideemptyfields:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="emailresultincdatarecordid" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_DATA_RECORD_ID"
+                   description="COM_VISFORMS_INCLUDE_DATA_RECORD_ID_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="emailresultinccreated" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_CREATED"
+                   description="COM_VISFORMS_INCLUDE_CREATED_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="emailresultincformtitle" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_FORM_TITLE"
+                   description="COM_VISFORMS_INCLUDE_FORM_TITLE_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="emailresultincip" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_USER_IP"
+                   description="COM_VISFORMS_INCLUDE_USER_IP_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="emailresultincfilepath" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_SHOW_DOWNLOADPATH"
+                   description="COM_VISFORMS_SHOW_DOWNLOADPATH_RESULT_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="receiptmailaslink" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_RECEIPT_MAIL_AS_LINK_LABEL"
+                   description="COM_VISFORMS_RECEIPT_MAIL_AS_LINK_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="emailresultincfile" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_FILE_UPLOAD_FILES"
+                   description="COM_VISFORMS_INCLUDE_FILE_UPLOAD_FILES_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+        </fields>
+        <field type="spacer" name="emailrecipientspacerhr" hr="true"/>
+        <field type="spacer" name="emailrecipientspacer" class="text"
+               label="COM_VISFORMS_EMAIL_RECIEPENT_LABEL"
+        />
+        <field name="emailreceipt" type="radio"
+               class="btn-group btn-group-yesno switcher"
+               label="COM_VISFORMS_EMAIL_RECEIPT"
+               description="COM_VISFORMS_EMAIL_RECEIPT_DESC"
+               default="0"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field name="emailreceiptsubject" type="text" label="COM_VISFORMS_EMAIL_RECEIPT_SUBJECT"
+               description="COM_VISFORMS_EMAIL_RECEIPT_SUBJECT_DESC" class="inputbox" size="50" maxlength="250"/>
+        <field name="emailreceiptfrom" class="longfield inputbox" type="email" label="COM_VISFORMS_EMAIL_RECEIPT_FROM"
+               description="COM_VISFORMS_EMAIL_RECEIPT_FROM_DESC" size="50" maxlength="250"/>
+        <field name="emailreceiptfromname" class="longfield inputbox" type="text"
+               label="COM_VISFORMS_EMAIL_RECEIPT_FROM_NAME"
+               description="COM_VISFORMS_EMAIL_RECEIPT_FROM_NAME_DESC" size="50" maxlength="250"/>
+
+        <field name="emailreceipttext" type="editor" class="inputbox" buttons="true" hide="module,pagebreak,readmore"
+               editor="tinyMCE|none"
+               label="COM_VISFORMS_EMAIL_RECEIPT_TEXT" description="COM_VISFORMS_EMAIL_RECEIPT_TEXT_DESC"
+               filter="JComponentHelper::filterText"/>
+        <fields name="emailreceiptsettings">
+            <field name="emailrechascal" type="aef" feature="10" default="0"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field name="emailreceiptincfield" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_DATA"
+                   description="COM_VISFORMS_INCLUDE_DATA_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="emailreceipthideemptyfields" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_HIDE_EMPTY_FIELDS_LABEL"
+                   description="COM_VISFORMS_HIDE_EMPTY_FIELDS_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="emailreceiptemptycaliszero" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EMPTY_CAL_IS_ZERO_FIELDS_LABEL"
+                   description="COM_VISFORMS_EMPTY_CAL_IS_ZERO_FIELDS_DESC"
+                   default="0"
+                   showon="emailrechascal:1[AND]emailreceipthideemptyfields:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="emailreceiptincdatarecordid" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_DATA_RECORD_ID"
+                   description="COM_VISFORMS_INCLUDE_DATA_RECORD_ID_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="emailreceiptinccreated" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_CREATED"
+                   description="COM_VISFORMS_INCLUDE_CREATED_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="emailreceiptincformtitle" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_FORM_TITLE"
+                   description="COM_VISFORMS_INCLUDE_FORM_TITLE_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="emailreceiptincip" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_USER_IP"
+                   description="COM_VISFORMS_INCLUDE_USER_IP_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="emailrecipientincfilepath" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_SHOW_DOWNLOADPATH"
+                   description="COM_VISFORMS_SHOW_DOWNLOADPATH_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="emailreceiptincfile" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_FILE_UPLOAD_FILES"
+                   description="COM_VISFORMS_INCLUDE_FILE_UPLOAD_FILES_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+
+        </fields>
+    </fieldset>
+    <fieldset name="visform-edit-email-details" label="COM_VISFORMS_FIELDSET_EDIT_EMAIL">
+        <fields name="editemailresultsettings">
+            <field name="fdeexists" type="aef" feature="0" default="0"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field name="minsub110" type="aef" feature="12" default="0" version="1.1.0"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field name="minsub312" type="aef" feature="12" default="0" version="3.1.2"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field type="spacer" name="editemailresultspacer" class="text"
+                   label="COM_VISFORMS_EDIT_EMAIL_RESULT_LABEL"
+            />
+            <field name="editemailresult" type="list"
+                   class="inputbox"
+                   label="COM_VISFORMS_SEND_EDIT_EMAIL_LABEL"
+                   description="COM_VISFORMS_SEND_EDIT_EMAIL_DESC"
+                   default="0"
+                   showon="fdeexists:1"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+                <option value="2">COM_VISFORMS_USER_DECISION</option>
+            </field>
+            <field name="editemailfrom" class="longfield inputbox" type="email" label="COM_VISFORMS_EMAIL_FROM"
+                   description="COM_VISFORMS_EMAIL_FROM_DESC" size="50" maxlength="250"/>
+            <field name="editemailfromname" class="longfield inputbox" type="text" label="COM_VISFORMS_EMAIL_FROM_NAME"
+                   description="COM_VISFORMS_EMAIL_FROM_NAME_DESC" size="50" maxlength="250"/>
+
+            <field name="editemailto" class="longfield inputbox" type="email" label="COM_VISFORMS_EMAIL_TO"
+                   description="COM_VISFORMS_EMAIL_TO_RESULT_DESC" size="50" maxlength="250"/>
+
+            <field name="editemailcc" class="longfield inputbox" type="text" label="COM_VISFORMS_EMAIL_CC"
+                   description="COM_VISFORMS_EMAIL_CC_DESC" size="50" maxlength="250"/>
+
+            <field name="editemailbcc" class="longfield inputbox" type="text" label="COM_VISFORMS_EMAIL_BCC"
+                   description="COM_VISFORMS_EMAIL_BCC_DESC" size="50" maxlength="250"/>
+
+            <field name="editsubject" class="longfield inputbox" type="text" label="COM_VISFORMS_EMAIL_MAIL_SUBJECT"
+                   description="COM_VISFORMS_EMAIL_MAIL_SUBJECT_DESC" size="50" maxlength="250"/>
+            <field name="editemailresulttext" type="editor" class="inputbox" buttons="true" hide="module,pagebreak,readmore"
+                   editor="tinyMCE|none"
+                   label="COM_VISFORMS_EMAIL_RESULT_TEXT" description="COM_VISFORMS_EMAIL_RESULT_TEXT_DESC"
+                   filter="JComponentHelper::filterText"/>
+            <field name="editemailresultincfield" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_DATA"
+                   description="COM_VISFORMS_INCLUDE_DATA_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="editemailresulthideemptyfields" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_HIDE_EMPTY_FIELDS_LABEL"
+                   description="COM_VISFORMS_HIDE_EMPTY_FIELDS_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="editemailresultemptycaliszero" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EMPTY_CAL_IS_ZERO_FIELDS_LABEL"
+                   description="COM_VISFORMS_EMPTY_CAL_IS_ZERO_FIELDS_DESC"
+                   default="0"
+                   showon="minsub312:1[AND]editemailresulthideemptyfields:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="editemailresultincdatarecordid" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_DATA_RECORD_ID"
+                   description="COM_VISFORMS_INCLUDE_DATA_RECORD_ID_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="editemailresultinccreated" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_CREATED"
+                   description="COM_VISFORMS_INCLUDE_CREATED_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="editemailresultincformtitle" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_FORM_TITLE"
+                   description="COM_VISFORMS_INCLUDE_FORM_TITLE_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="editemailresultincip" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_USER_IP"
+                   description="COM_VISFORMS_INCLUDE_USER_IP_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="editemailresultincfilepath" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_SHOW_DOWNLOADPATH"
+                   description="COM_VISFORMS_SHOW_DOWNLOADPATH_RESULT_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="editreceiptmailaslink" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_RECEIPT_MAIL_AS_LINK_LABEL"
+                   description="COM_VISFORMS_RECEIPT_MAIL_AS_LINK_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="editemailresultincfile" type="list"
+                   class="inputbox"
+                   label="COM_VISFORMS_INCLUDE_FILE_UPLOAD_FILES"
+                   description="COM_VISFORMS_INCLUDE_FILE_UPLOAD_FILES_DESC"
+                   default="0"
+            >
+                <option value="1">COM_VISFORMS_NEW_ONLY</option>
+                <option value="0">JNO</option>
+                <option value="2">COM_VISFORMS_ALL</option>
+            </field>
+            <field name="editemailresultmodifiedonly" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EDIT_EMAIL_MODIFIDIED_DATA_ONLY_LABEL"
+                   description="COM_VISFORMS_EDIT_EMAIL_MODIFIDIED_DATA_ONLY_DESC"
+                   default="0"
+                   showon="fdeexists:1[AND]minsub110:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+        </fields>
+        <fields name="editemailreceiptsettings">
+            <field type="spacer" name="editemailrecipientspacerhr" hr="true"/>
+            <field type="spacer" name="editemailrecipientspacer" class="text"
+                   label="COM_VISFORMS_EDIT_EMAIL_RECIEPENT_LABEL"
+            />
+            <field name="fdeexists" type="aef" feature="0" default="0"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field name="minsub110" type="aef" feature="12" default="0" version="1.1.0"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field name="minsub312" type="aef" feature="12" default="0" version="3.1.2"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field name="editemailreceipt" type="list"
+                   class="inputbox"
+                   label="COM_VISFORMS_SEND_EDIT_EMAIL_LABEL"
+                   description="COM_VISFORMS_SEND_EDIT_EMAIL_DESC"
+                   default="0"
+                   showon="fdeexists:1"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+                <option value="2">COM_VISFORMS_USER_DECISION</option>
+            </field>
+            <field name="editemailreceiptsubject" type="text" label="COM_VISFORMS_EMAIL_RECEIPT_SUBJECT"
+                   description="COM_VISFORMS_EMAIL_RECEIPT_SUBJECT_DESC" class="inputbox" size="50" maxlength="250"/>
+            <field name="editemailreceiptfrom" class="longfield inputbox" type="email" label="COM_VISFORMS_EMAIL_RECEIPT_FROM"
+                   description="COM_VISFORMS_EMAIL_RECEIPT_FROM_DESC" size="50" maxlength="250"/>
+            <field name="editemailreceiptfromname" class="longfield inputbox" type="text"
+                   label="COM_VISFORMS_EMAIL_RECEIPT_FROM_NAME"
+                   description="COM_VISFORMS_EMAIL_RECEIPT_FROM_NAME_DESC" size="50" maxlength="250"/>
+
+            <field name="editemailreceipttext" type="editor" class="inputbox" buttons="true" hide="module,pagebreak,readmore"
+                   editor="tinyMCE|none"
+                   label="COM_VISFORMS_EMAIL_RECEIPT_TEXT" description="COM_VISFORMS_EMAIL_RECEIPT_TEXT_DESC"
+                   filter="JComponentHelper::filterText"/>
+            <field name="editemailreceiptincfield" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_DATA"
+                   description="COM_VISFORMS_INCLUDE_DATA_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="editemailreceipthideemptyfields" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_HIDE_EMPTY_FIELDS_LABEL"
+                   description="COM_VISFORMS_HIDE_EMPTY_FIELDS_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="editemailreceiptemptycaliszero" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EMPTY_CAL_IS_ZERO_FIELDS_LABEL"
+                   description="COM_VISFORMS_EMPTY_CAL_IS_ZERO_FIELDS_DESC"
+                   default="0"
+                   showon="minsub312:1[AND]editemailreceipthideemptyfields:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="editemailreceiptincdatarecordid" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_DATA_RECORD_ID"
+                   description="COM_VISFORMS_INCLUDE_DATA_RECORD_ID_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="editemailreceiptinccreated" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_CREATED"
+                   description="COM_VISFORMS_INCLUDE_CREATED_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="editemailreceiptincformtitle" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_FORM_TITLE"
+                   description="COM_VISFORMS_INCLUDE_FORM_TITLE_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="editemailreceiptincip" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_INCLUDE_USER_IP"
+                   description="COM_VISFORMS_INCLUDE_USER_IP_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="editemailrecipientincfilepath" type="list"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_SHOW_DOWNLOADPATH"
+                   description="COM_VISFORMS_SHOW_DOWNLOADPATH_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="editemailreceiptincfile" type="list"
+                   class="inputbox"
+                   label="COM_VISFORMS_INCLUDE_FILE_UPLOAD_FILES"
+                   description="COM_VISFORMS_INCLUDE_FILE_UPLOAD_FILES_DESC"
+                   default="0"
+            >
+                <option value="1">COM_VISFORMS_NEW_ONLY</option>
+                <option value="0">JNO</option>
+                <option value="2">COM_VISFORMS_ALL</option>
+            </field>
+            <field name="editemailreceiptmodifiedonly" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EDIT_EMAIL_MODIFIDIED_DATA_ONLY_LABEL"
+                   description="COM_VISFORMS_EDIT_EMAIL_MODIFIDIED_DATA_ONLY_DESC"
+                   default="0"
+                   showon="fdeexists:1[AND]minsub110:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+        </fields>
+    </fieldset>
+    <fieldset name="visform-spamprotection" label="COM_VISFORMS_SPAMPROTECTION">
+        <field type="spacer" name="spambotcheckspacer" class="text"
+               label="COM_VISFORMS_SPAMBOTCHECK_SPACER_LABEL"
+        />
+        <field name="spambotcheck" type="radio"
+               class="btn-group btn-group-yesno switcher"
+               label="COM_VISFORMS_USE_SPAMBOTCHECK"
+               description="COM_VISFORMS_USE_SPAMBOTCHECK_DESC"
+               default="1"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <fields name="spamprotection">
+            <field name="spbot_check_ip" type="radio" class="btn-group btn-group-yesno switcher"
+                   default="1" label="PLG_VISFORMS_SPAMBOTCHECK_CHECK_IP"
+                   description="PLG_VISFORMS_SPAMBOTCHECK_CHECK_IP_DESC">
+                <option value="0">JNo</option>
+                <option value="1">JYes</option>
+            </field>
+            <field name="spbot_check_email" type="radio" class="btn-group btn-group-yesno switcher"
+                   default="1" label="PLG_VISFORMS_SPAMBOTCHECK_CHECK_E_MAIL"
+                   description="PLG_VISFORMS_SPAMBOTCHECK_CHECK_EMAIL_DESC">
+                <option value="0">JNo</option>
+                <option value="1">JYes</option>
+            </field>
+            <field type="spacer" name="spambotbasicspacerhr" hr="true"/>
+            <field name="spbot_stopforumspam" type="radio" class="btn-group btn-group-yesno switcher"
+                   default="1" label="PLG_VISFORMS_SPAMBOTCHECK_STOPFORUMSPAM"
+                   description="PLG_VISFORMS_SPAMBOTCHECK_STOPFORUMSPAM_DESC">
+                <option value="0">JNo</option>
+                <option value="1">JYes</option>
+            </field>
+            <field name="spbot_stopforumspam_max_allowed_frequency" type="text" default="0" size="25"
+                   label="PLG_VISFORMS_SPAMBOTCHECK_ALLOWED_FREQUENCY"
+                   description="PLG_VISFORMS_SPAMBOTCHECK_STOPFORUMSPAM_FREQUENCY_DESC"/>
+            <field type="spacer" name="spambotsfsspacerhr" hr="true"/>
+            <field name="spbot_projecthoneypot" type="radio"
+                   class="btn-group btn-group-yesno switcher" default="0" label="PLG_VISFORMS_SPAMBOTCHECK_PROJECTHONEYPOT"
+                   description="PLG_VISFORMS_SPAMBOTCHECK_PROJECTHONEYPOT_DESC">
+                <option value="0">JNo</option>
+                <option value="1">JYes</option>
+            </field>
+            <field name="spbot_projecthoneypot_api_key" type="text" default="" size="25"
+                   label="PLG_VISFORMS_SPAMBOTCHECK_DNS_PROJECTPHONEYPOT_ORG_KEY"
+                   description="PLG_VISFORMS_SPAMBOTCHECK_DNS_PROJECTPHONEYPOT_DESC"/>
+            <field name="spbot_projecthoneypot_max_allowed_threat_rating" type="text" default="0" size="25"
+                   label="PLG_VISFORMS_SPAMBOTCHECK_ALLOWED_THREAT_RATING"
+                   description="PLG_VISFORMS_SPAMBOTCHECK_PHP_THREAT_RATING_DESC"/>
+            <field type="spacer" name="spambotpjpspacerhr" hr="true"/>
+            <field name="spbot_sorbs" type="radio" class="btn-group btn-group-yesno switcher" default="0"
+                   label="PLG_VISFORMS_SPAMBOTCHECK_DNS_SORBS"
+                   description="PLG_VISFORMS_SPAMBOTCHECK_DNS_SORBS_DESC">
+                <option value="0">JNo</option>
+                <option value="1">JYes</option>
+            </field>
+            <field type="spacer" name="spambotsorbsspacerhr" hr="true"/>
+            <field name="spbot_spamcop" type="radio" class="btn-group btn-group-yesno switcher" default="1"
+                   label="PLG_VISFORMS_SPAMBOTCHECK_DNS_SCAMPCOP"
+                   description="PLG_VISFORMS_SPAMBOTCHECK_DNS_SCAMPCOP_DESC">
+                <option value="0">JNo</option>
+                <option value="1">JYes</option>
+            </field>
+            <field type="spacer" name="spambotcheckspacerhr" hr="true"/>
+            <field name="allow_generic_email_check" type="radio" default="0"
+                   label="PLG_VISFORMS_SPAMBOTCHECK_ALLOW_GENERIC_EMAIL"
+                   description="PLG_VISFORMS_SPAMBOTCHECK_ALLOW_GENERIC_EMAIL_DESC" class="btn-group btn-group-yesno switcher">
+                <option value="0">JNo</option>
+                <option value="1">JYes</option>
+            </field>
+            <field type="spacer" name="spambotcheckwlhr" label="PLG_VISFORMS_SPAMBOTCHECK_EMAIL_WHITELIST_DESC"/>
+            <field name="spbot_whitelist_email" type="textarea" default=""
+                   label="PLG_VISFORMS_SPAMBOTCHECK_E_MAIL_WHITELIST"
+                   description="PLG_VISFORMS_SPAMBOTCHECK_EMAIL_WHITELIST_DESC2" rows="10" cols="25"/>
+            <field type="spacer" name="spambotcheckipspacerhr" hr="true"/>
+            <field name="spbot_whitelist_ip" type="textarea" default="" rows="10" cols="25"
+                   label="PLG_VISFORMS_SPAMBOTCHECK_IP_WHITELIST"
+                   description="PLG_VISFORMS_SPAMBOTCHECK_IP_WHITELIST_DESC"/>
+            <field name="spbot_blacklist_email" type="textarea" default=""
+                   label="PLG_VISFORMS_SPAMBOTCHECK_EMAIL_BLACKLIST"
+                   description="PLG_VISFORMS_SPAMBOTCHECK_EMAIL_BLACKLIST_DESC" rows="10" cols="50"/>
+            <field name="spbot_log_to_db" type="radio" class="btn-group btn-group-yesno switcher" default="0"
+                   label="PLG_VISFORMS_SPAMBOTCHECK_LOG_SPAMBOT_TO_DB"
+                   description="PLG_VISFORMS_SPAMBOTCHECK_LOG_SPAMERS_TO_DB_DESC">
+                <option value="0">JNo</option>
+                <option value="1">JYes</option>
+            </field>
+        </fields>
+
+        <field type="spacer" name="captchaspacerhr" hr="true"/>
+        <field type="spacer" name="captchaspacer" class="text"
+               label="COM_VISFORMS_CAPTCHASPACER_LABEL"
+        />
+        <field name="captcha" type="list"
+               label="COM_VISFORMS_USE_CAPTCHA"
+               description="COM_VISFORMS_USE_CAPTCHA_DESC"
+               default="0"
+               onchange="googleReCaptchaListBoxSelection()"
+        >
+            <option value="0">COM_VISFORMS_CAPTCHA_NONE</option>
+            <option value="1">COM_VISFORMS_CAPTCHA_VISCAPTCHA</option>
+            <option value="2">COM_VISFORMS_CAPTCHA_RECAPTCHA</option>
+        </field>
+
+        <fields name="captchaoptions">
+            <field name="captchalabel" type="text" label="COM_VISFORMS_CAPTCHA_LABEL"
+                   description="COM_VISFORMS_CAPTCHA_LABEL_DESC" class="inputbox" size="50" maxlength="250"
+                   default="Captcha"/>
+
+            <field name="showcaptchalabel" label="COM_VISFORMS_SHOW_CAPTCHA_LABEL"
+                   type="list" class="inputbox" default="0">
+                <option value="0">COM_VISFORMS_SHOW_LABEL_SHOW</option>
+                <option value="1">COM_VISFORMS_SHOW_LABEL_HIDE</option>
+            </field>
+
+            <field name="captchacustominfo" type="text" label="COM_VISFORMS_CAPTCHA_TIPS_TEXT"
+                   description="COM_VISFORMS_CAPTCHA_TIPS_TEXT_DESC" class="inputbox" size="50" maxlength="250"/>
+
+            <field name="captchacustomerror" type="text" label="COM_VISFORMS_CAPTCHA_CUSTOM_ERROR_TEXT"
+                   description="COM_VISFORMS_CAPTCHA_CUSTOM_ERROR_TEXT_DESC" class="inputbox" size="50"
+                   maxlength="250"/>
+            <field name="grecaptcha2label_bootstrap_size"
+                    type="integer"
+                    first="0"
+                    last="12"
+                    step="1"
+                    label="COM_VISFORMS_FIELD_GRECAPTCA_LABEL_BOOTSTRAP_SIZE_LABEL"
+                    description="COM_VISFORMS_FIELD_GRECAPTCA_LABEL_COM_VISFORMS_FIELD_BOOTSTRAP_SIZE_DESC" />
+            <field name="btLabelWidthDesc" type="spacer" label="COM_VISFORMS_BOOTSTRAP_LABEL_WIDTH_DESC"  />
+            <field name="captchaLabelBootstrapWidth" type="integer"
+                   first="0" last="12" step="1"
+                   label="COM_VISFORMS_FIELD_LABEL_BOOTSTRAP_WIDTH_LABEL"
+                   default="12"
+            />
+            <field name="captchaLabelBootstrapWidthSm" type="integer"
+                   first="0" last="12" step="1"
+                   label="COM_VISFORMS_FIELD_LABEL_BOOTSTRAP_WIDTH_SM_LABEL"
+                   default="12"
+            />
+            <field name="captchaLabelBootstrapWidthMd" type="integer"
+                   first="0" last="12" step="1"
+                   label="COM_VISFORMS_FIELD_LABEL_BOOTSTRAP_WIDTH_MD_LABEL"
+                   default="12"
+            />
+            <field name="captchaLabelBootstrapWidthLg" type="integer"
+                   first="0" last="12" step="1"
+                   label="COM_VISFORMS_FIELD_LABEL_BOOTSTRAP_WIDTH_LG_LABEL"
+                   default="12"
+            />
+            <field name="captchaLabelBootstrapWidthXl" type="integer"
+                   first="0" last="12" step="1"
+                   label="COM_VISFORMS_FIELD_LABEL_BOOTSTRAP_WIDTH_XL_LABEL"
+                   default="12"
+            />
+            <field name="uikit3LabelWidthDesc" type="spacer" label="COM_VISFORMS_UIKIT3_LABEL_WIDTH_DESC"  />
+            <field name="captchaLabelUikit3Width" type="integer"
+                   first="0" last="6" step="1"
+                   label="COM_VISFORMS_FIELD_LABEL_BOOTSTRAP_WIDTH_LABEL"
+                   default="6"
+            />
+            <field name="captchaLabelUikit3WidthSm" type="integer"
+                   first="0" last="6" step="1"
+                   label="COM_VISFORMS_FIELD_LABEL_BOOTSTRAP_WIDTH_SM_LABEL"
+                   default="6"
+            />
+            <field name="captchaLabelUikit3WidthMd" type="integer"
+                   first="0" last="6" step="1"
+                   label="COM_VISFORMS_FIELD_LABEL_BOOTSTRAP_WIDTH_MD_LABEL"
+                   default="6"
+            />
+            <field name="captchaLabelUikit3WidthLg" type="integer"
+                   first="0" last="6" step="1"
+                   label="COM_VISFORMS_FIELD_LABEL_BOOTSTRAP_WIDTH_LG_LABEL"
+                   default="6"
+            />
+            <field name="captchaLabelUikit3WidthXl" type="integer"
+                   first="0" last="6" step="1"
+                   label="COM_VISFORMS_FIELD_LABEL_BOOTSTRAP_WIDTH_XL_LABEL"
+                   default="6"
+            />
+            <field name="uikit2LabelWidthDesc" type="spacer" label="COM_VISFORMS_UIKIT2_LABEL_WIDTH_DESC"  />
+            <field name="captchaLabelUikit2Width" type="integer"
+                   first="0" last="10" step="1"
+                   label="COM_VISFORMS_FIELD_LABEL_BOOTSTRAP_WIDTH_LABEL"
+                   default="10"
+            />
+            <field name="captchaLabelUikit2WidthSm" type="integer"
+                   first="0" last="10" step="1"
+                   label="COM_VISFORMS_FIELD_LABEL_BOOTSTRAP_WIDTH_SM_LABEL"
+                   default="10"
+            />
+            <field name="captchaLabelUikit2WidthMd" type="integer"
+                   first="0" last="10" step="1"
+                   label="COM_VISFORMS_FIELD_LABEL_BOOTSTRAP_WIDTH_MD_LABEL"
+                   default="10"
+            />
+            <field name="captchaLabelUikit2WidthLg" type="integer"
+                   first="0" last="10" step="1"
+                   label="COM_VISFORMS_FIELD_LABEL_BOOTSTRAP_WIDTH_LG_LABEL"
+                   default="10"
+            />
+        </fields>
+        <fields name="viscaptchaoptions">
+            <field type="spacer" name="visformscaptchaobptionsspacerhr" hr="true"/>
+            <field type="spacer" name="visformscaptchaoptionsspacer" class="text"
+                   label="COM_VISFORMS_VISFORMSCAPTCHAOPTIONSSPACER_LABEL"
+            />
+            <field name="image_width" type="text" label="COM_VISFORMS_VCCAPTCHA_IMAGE_WIDTH"
+                   description="COM_VISFORMS_VCCAPTCHA_IMAGE_WIDTH_DESC" class="inputbox" size="50" default="215"
+                   maxlength="10"/>
+            <field name="image_height" type="text" label="COM_VISFORMS_VCCAPTCHA_IMAGE_HEIGHT"
+                   description="COM_VISFORMS_VCCAPTCHA_IMAGE_HEIGHT_DESC" class="inputbox" size="50" default="80"
+                   maxlength="10"/>
+            <field name="image_bg_color" type="color" label="COM_VISFORMS_VCCAPTCHA_BGCOLOR"
+                   description="COM_VISFORMS_VCCAPTCHA_BGCOLOR_DESC" class="inputbox" size="50" default="#ffffff"/>
+            <field name="text_color" type="color" label="COM_VISFORMS_VCCAPTCHA_FONTCOLOR"
+                   description="COM_VISFORMS_VCCAPTCHA_FONTCOLOR_DESC" class="inputbox" size="50" default="#616161"/>
+            <field name="line_color" type="color" label="COM_VISFORMS_VCCAPTCHA_LINECOLOR"
+                   description="COM_VISFORMS_VCCAPTCHA_LINECOLOR_DESC" class="inputbox" size="50" default="#616161"/>
+            <field name="noise_color" type="color" label="COM_VISFORMS_VCCAPTCHA_NOISECOLOR"
+                   description="COM_VISFORMS_VCCAPTCHA_NOISECOLOR_DESC" class="inputbox" size="50" default="#616161"/>
+            <field name="text_transparency_percentage" type="text" label="COM_VISFORMS_VCCAPTCHA_TEXT_TRANSP"
+                   description="COM_VISFORMS_VCCAPTCHA_TEXT_TRANSP_DESC" class="inputbox" size="50" default="50"
+                   maxlength="3"/>
+            <field name="use_transparent_text" label="COM_VISFORMS_VCCAPTCHA_USE_TEXT_TRANSP"
+                   description="COM_VISFORMS_VCCAPTCHA_USE_TEXT_TRANSP_DESC"
+                   type="radio" class="btn-group btn-group-yesno switcher" default="0">
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="code_length" type="integer" label="COM_VISFORMS_VCCAPTCHA_CODELENGTH"
+                   description="COM_VISFORMS_VCCAPTCHA_CODELENGTH_DESC" size="50" default="6" first="1" last="10"
+                   step="1"/>
+            <field name="case_sensitive" label="COM_VISFORMS_VCCAPTCHA_CASE_SENSITIVE"
+                   description="COM_VISFORMS_VCCAPTCHA_CASE_SENSITIVE_DESC"
+                   type="radio" class="btn-group btn-group-yesno switcher" default="0">
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="perturbation" type="text" label="COM_VISFORMS_VCCAPTCHA_DISTORTION"
+                   description="COM_VISFORMS_VCCAPTCHA_DISTORTION_DESC" class="inputbox" size="50" default="0.75"/>
+            <field name="num_lines" type="integer" label="COM_VISFORMS_VCCAPTCHA_LINENUMBER"
+                   description="COM_VISFORMS_VCCAPTCHA_LINENUMBER_DESC" size="50" default="8" first="1" last="10"
+                   step="1"/>
+            <field name="captcha_type" label="COM_VISFORMS_SHOW_CAPTCHA_TYPE"
+                   type="list" class="inputbox" default="0">
+                <option value="0">COM_VISFORMS_VCCAPTCHA_TYPE_TEXT</option>
+                <option value="1">COM_VISFORMS_VCCAPTCHA_TYPE_MATH</option>
+            </field>
+        </fields>
+    </fieldset>
+    <fieldset name="visform-advanced-details" label="COM_VISFORMS_FIELDSET_ADVANCED">
+        <fields name="exportsettings">
+            <field name="hasSub" type="aef" feature="12" default="0"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field type="spacer" name="exportspacer" class="text"
+                   label="COM_VISFORMS_EXPORT_SPACER_LABEL"
+            />
+            <field name="includeheadline" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EXPORT_INCLUDE_HEADLINE"
+                   description="COM_VISFORMS_EXPORT_INCLUDE_HEADLINE_DESCR"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+
+            <field name="exppublishfieldsonly" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EXPORT_PUBLISHED_FIELDS_ONLY"
+                   description="COM_VISFORMS_EXPORT_PUBLISHED_FIELDS_ONLY_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="exppublisheddataonly" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EXPORT_PUBLISHED_DATA_ONLY"
+                   description="COM_VISFORMS_EXPORT_PUBLISHED_DATA_ONLY_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="expfieldpublished" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EXPORT_FIELD_PUBLISHED"
+                   description="COM_VISFORMS_EXPORT_FIELD_PUBLISHED_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="expfieldip" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EXPORT_FIELD_IP"
+                   description="COM_VISFORMS_EXPORT_FIELD_IP_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="expfieldcreated" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EXPORT_FIELD_CREATED"
+                   description="COM_VISFORMS_EXPORT_FIELD_CREATED_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="expfieldcreatedby" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EXPORT_FIELD_CREATED_BY"
+                   description="COM_VISFORMS_EXPORT_FIELD_CREATED_BY_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="expfieldismfd" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EXPORT_FIELD_MODIFIED"
+                   description="COM_VISFORMS_EXPORT_FIELD_MODIFIED_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="expfieldmodifiedat" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EXPORT_FIELD_MODIFIED_AT"
+                   description="COM_VISFORMS_EXPORT_FIELD_MODIFIED_AT_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="expfieldid" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EXPORT_FIELD_ID"
+                   description="COM_VISFORMS_EXPORT_FIELD_ID_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="usewindowscharset" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EXPORT_CHARSET"
+                   description="COM_VISFORMS_EXPORT_CHARSET_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="expseparator" type="list"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EXPORT_SEPARATOR"
+                   description="COM_VISFORMS_EXPORT_SEPARATOR_DESC"
+                   default=";"
+            >
+                <option value=";">COM_VISFORMS_SEMICOLON</option>
+                <option value=",">COM_VISFORMS_KOMMA</option>
+            </field>
+            <field name="expfilename" type="text" label="COM_VISFORMS_EXPORT_FILE_NAME"
+                   description="COM_VISFORMS_EXPORT_FILE_NAME_DESC" class="inputbox" size="50"
+                   maxlength="250"
+                   showon="hasSub:1"/>
+            <field name="expfilenameappend" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EXPORT_FILE_NAME_APPEND"
+                   description="COM_VISFORMS_EXPORT_FILE_NAME_APPEND_DESC"
+                   default="0"
+                   showon="hasSub:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+        </fields>
+        <fields name="layoutsettings">
+            <field name="mpfexists" type="aef" feature="9" default="0"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field name="minsubfiles200" type="aef" feature="13" version="2.0.0" default="0"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field name="minsubfiles310" type="aef" feature="13" version="3.1.0" default="0"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field name="minsub312" type="aef" feature="12" version="3.1.2" default="0"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field name="hasSub" type="aef" feature="12" default="0"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field type="spacer" name="layoutspacerhr" hr="true"/>
+            <field type="spacer" name="layoutspacer" class="text"
+                   label="COM_VISFORMS_LAYOUTSPACER_LABEL"
+            />
+            <field name="formCSSclass" type="text" label="COM_VISFORMS_CSS_CLASS"
+                   description="COM_VISFORMS_CSS_CLASS_DESC" class="inputbox" size="50" maxlength="250"/>
+
+            <field name="required" type="list" label="COM_VISFORMS_REQUIRED_DESCRIPTION_POSITION"
+                   description="COM_VISFORMS_REQUIRED_DESCRIPTION_POSITION_DESC"
+                   default="top">
+                <option value="top">COM_VISFORMS_REQUIRED_POSITION_TOP</option>
+                <option value="captcha">COM_VISFORMS_REQUIRED_POSITION_CAPTCHA</option>
+                <option value="bottom">COM_VISFORMS_REQUIRED_POSITION_BOTTOM</option>
+                <option value="none">COM_VISFORMS_REQUIRED_POSITION_NONE</option>
+            </field>
+            <field name="requiredasterix" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_SHOW_REQUIRED_ASTERIX"
+                   description="COM_VISFORMS_SHOW_REQUIRED_ASTERIX_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="setfocus" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_SET_FOCUS_ON_FIRST_FIELD"
+                   description="COM_VISFORMS_SET_FOCUS_ON_FIRST_FIELD_DESC"
+                   default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="formlayout" type="vflayouts"
+                   label="COM_VISFORMS_LAYOUT"
+                   description="COM_VISFORMS_LAYOUT_DESC"
+                   default="visforms"
+                   onchange="googleReCaptchaBt4ListBoxSelection();googleReCaptchaListBoxSelection();"
+            >
+                <option value="visforms">COM_VISFORMS_LAYOUT_VISFORMS</option>
+                <option value="btdefault">COM_VISFORMS_LAYOUT_BOOTSTRAP_DEFAULT</option>
+            </field>
+            <field name="defaultresponsive" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_DEFAULT_LAYOUT_RESPONSIVE"
+                   description="COM_VISFORMS_DEFAULT_LAYOUT_RESPONSIVE_DESC"
+                   default="0"
+                   showon="hasSub:1[AND]formlayout:visforms"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="displaysublayout" type="list"
+                   label="COM_VISFORMS_BT4_SUBLAYOUT"
+                   description="COM_VISFORMS_BT4_SUBLAYOUT_DESC"
+                   default="horizontal"
+                   onchange="googleReCaptchaBt4ListBoxSelection()"
+                   showon="formlayout:btdefault,bt3default,bt4mcindividual,uikit3,uikit2"
+            >
+                <option value="stacked">COM_VISFORMS_SUBLAYOUT_STACKED</option>
+                <option value="horizontal">COM_VISFORMS_SUBLAYOUT_HORIZONTAL</option>
+                <option value="individual">COM_VISFORMS_SUBLAYOUT_INDIVIDUAL</option>
+            </field>
+            <field name="usebootstrapcss" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_USE_BOOTSTRAP_FORM_CSS"
+                   description="COM_VISFORMS_USE_BOOTSTRAP_FORM_CSS_DESC"
+                   default="0" showon="formlayout:btdefault,bt4mcindividual"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="errormessagenopopup" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_ERROR_MESSAGE_NO_POPUP"
+                   description="COM_VISFORMS_ERROR_MESSAGE_NO_POPUP_DESC"
+                   default="0" showon="formlayout:btdefault,bt3default[AND]displaysublayout:individual"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="showmessageformprocessing" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_SHOW_MESSAGE_FORM_PROCESSING"
+                   description="COM_VISFORMS_SHOW_MESSAGE_FORM_PROCESSING_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="formprocessingmessage" type="editor" class="inputbox"
+                   label="COM_VISFORMS_PROCESS_MESSAGE" buttons="true"
+                   hide="module,pagebreak,visformfields,readmore" editor="tinyMCE|none"
+                   filter="JComponentHelper::filterText" />
+            <field type="spacer" name="editlayoutspacerhr" hr="true" showon="formlayout:bt4mcindividual,uikit2, uikit3"/>
+            <field type="spacer" name="editlayoutspacer" class="text"
+                   label="COM_VISFORMS_EDIT_LAYOUT_LABEL" showon="formlayout:bt4mcindividual,uikit2, uikit3" />
+            <field name="savebtncssclass" type="text" label="COM_VISFORMS_SAVE_BUTTON_CSS_CLASS"
+                   class="inputbox" size="50" maxlength="250" showon="formlayout:bt4mcindividual,uikit2, uikit3" />
+            <field name="cancelbtncssclass" type="text" label="COM_VISFORMS_CANCEL_BUTTON_CSS_CLASS"
+                   class="inputbox" size="50" maxlength="250" showon="formlayout:bt4mcindividual,uikit2, uikit3" />
+            <field type="spacer" name="functionsspacerhr" hr="true" showon="hasSub:1" />
+            <field type="spacer" name="fuctionspagespacer" class="text"
+                   label="COM_VISFORMS_FUNCTIONS_LABEL" showon="hasSub:1"
+            />
+            <field name="preventsubmitonenter" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_PREVENT_SUBMIT_ON_ENTER"
+                   description="COM_VISFORMS_PREVENT_SUBMIT_ON_ENTER_DESC"
+                   default="0"
+                   showon="hasSub:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field type="spacer" name="summarypagespacerhr" hr="true" showon="mpfexists:1" />
+
+            <field type="spacer" name="summarypagespacer" class="text"
+                   label="COM_VISFORMS_SUMMARY_PAGE_LABEL" showon="mpfexists:1"
+            />
+            <field name="displaysummarypage" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_LAYOUT_DISPLAY_SUMMARY_PAGE"
+                   description="COM_VISFORMS_LAYOUT_DISPLAY_SUMMARY_PAGE_DESC"
+                   default="0" showon="mpfexists:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="summarybtntext" type="text" label="COM_VISFORMS_SUMMARY_BUTTON_TEXT"
+                   description="COM_VISFORMS_SUMMARY_BUTTON_TEXT_DESC" class="inputbox" size="50" maxlength="250"
+                   showon="mpfexists:1" />
+            <field name="summarybtncssclass" type="text" label="COM_VISFORMS_SUMMARY_BUTTON_CSS_CLASS"
+                   class="inputbox" size="50" maxlength="250" showon="formlayout:bt4mcindividual,uikit2, uikit3" />
+            <field name="correctbtntext" type="text" label="COM_VISFORMS_CORRECT_BUTTON_TEXT"
+                   description="COM_VISFORMS_CORRECT_BUTTON_TEXT_DESC" class="inputbox" size="50" maxlength="250"
+                   showon="mpfexists:1" />
+            <field name="correctbtncssclass" type="text" label="COM_VISFORMS_CORRECT_BUTTON_CSS_CLASS"
+                   class="inputbox" size="50" maxlength="250" showon="formlayout:bt4mcindividual,uikit2, uikit3" />
+            <field name="summarytag" type="list" label="COM_VISFORMS_SUMMARY_TAG"
+                   description="COM_VISFORMS_SUMMARY_TAG_DESC"
+                   default="table" showon="mpfexists:1">
+                <option value="table">COM_VISFORMS_SUMMARY_TAG_TABLE</option>
+                <option value="div">COM_VISFORMS_SUMMARY_TAG_P</option>
+                <option value="dl">COM_VISFORMS_SUMMARY_TAG_DL</option>
+                <option value="ul">COM_VISFORMS_SUMMARY_TAG_UL</option>
+                <option value="ol">COM_VISFORMS_SUMMARY_TAG_OL</option>
+            </field>
+            <field name="hideemptyfieldsinsummary" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_SUMMARY_HIDE_EMPTY_FIELDS"
+                   description="COM_VISFORMS_SUMMARY_HIDE_EMPTY_FIELDS_DESC"
+                   default="0" showon="mpfexists:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="summaryemptycaliszero" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EMPTY_CAL_IS_ZERO_FIELDS_LABEL"
+                   description="COM_VISFORMS_EMPTY_CAL_IS_ZERO_FIELDS_DESC"
+                   default="0"
+                   showon="minsub312:1[AND]hideemptyfieldsinsummary:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="summarylayoutclass" type="text" label="COM_VISFORMS_SUMMARY_CLASS"
+                   description="COM_VISFORMS_SUMMARY_CLASS_DESC" class="inputbox" size="50" maxlength="250"
+                   showon="mpfexists:1" />
+            <field name="summarydescriptionposition" type="list"
+                   label="COM_VISFORMS_CUSTOM_SUMMARY_TEXT_POSITION"
+                   description="COM_VISFORMS_CUSTOM_SUMMARY_TEXT_POSITION_DESC"
+                   default="top"
+                   showon="mpfexists:1"
+            >
+                <option value="top">COM_VISFORMS_REQUIRED_POSITION_TOP</option>
+                <option value="bottom">COM_VISFORMS_REQUIRED_POSITION_BOTTOM</option>
+
+            </field>
+            <field name="summarydescription" type="editor" class="inputbox"
+                   label="COM_VISFORMS_SUMMARY_PAGE_DESCRIPTION" description="COM_VISFORMS_SUMMARY_PAGE_DESCRIPTION_DESC" buttons="true"
+                   hide="module,pagebreak,visformfields,readmore" editor="tinyMCE|none"
+                   filter="JComponentHelper::filterText" showon="mpfexists:1"/>
+            <field type="spacer" name="multipageformspacerhr" hr="true" showon="mpfexists:1" />
+
+            <field type="spacer" name="multipageformspacer" class="text"
+                   label="COM_VISFORMS_MULTISTEPFORMSPACER_LABEL" showon="mpfexists:1"
+            />
+            <field name="backbtntext" type="text" label="COM_VISFORMS_BACK_BUTTON_TEXT"
+                   description="COM_VISFORMS_BACK_BUTTON_TEXT_DESC" class="inputbox" size="50" maxlength="250"
+                   showon="mpfexists:1" />
+            <field name="backbtncssclass" type="text" label="COM_VISFORMS_BACK_BUTTON_CSS_CLASS"
+                   class="inputbox" size="50" maxlength="250" showon="formlayout:bt4mcindividual,uikit2, uikit3" />
+            <field name="displayprogress" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_LAYOUT_DISPLAY_PROGRESS"
+                   description="COM_VISFORMS_LAYOUT_DISPLAY_PROGRESS_DESC"
+                   default="0" showon="mpfexists:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="displaysmallbadges" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_LAYOUT_DISPLAY_SMALL_BADGES"
+                   description="COM_VISFORMS_LAYOUT_DISPLAY_SMALL_BADGES_DESC"
+                   default="0" showon="mpfexists:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="mpdisplaytype" type="list"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_LAYOUT_MULTIPAGE_DISPLAY_TYPE"
+                   description="COM_VISFORMS_LAYOUT_MULTIPAGE_DISPLAY_TYPE_DESC"
+                   default="0" showon="minsubfiles200:1"
+            >
+                <option value="0">COM_VISFORMS_LAYOUT_MULTIPAGE_DISPLAY_TYPE_DEFAULT</option>
+                <option value="1">COM_VISFORMS_LAYOUT_MULTIPAGE_DISPLAY_TYPE_ACCORDION</option>
+
+            </field>
+            <field name="firstpanelcollapsed" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_LAYOUT_ACCORDION_FIRST_PANEL_COLLAPSED"
+                   description="COM_VISFORMS_LAYOUT_ACCORDION_FIRST_PANEL_COLLAPSED_DESC"
+                   default="0" showon="mpdisplaytype:1[AND]minsubfiles310:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+        </fields>
+        <field type="spacer" name="fileuploadspacerhr" hr="true"/>
+        <field type="spacer" name="fileuploadspacer" class="text"
+               label="COM_VISFORMS_UPLOADSPACER_LABEL"
+        />
+        <field name="uploadpath" type="text" label="COM_VISFORMS_UPLOADED_FILE_PATH"
+               description="COM_VISFORMS_UPLOADED_FILE_PATH_DESC" class="inputbox" size="50" maxlength="250"
+               default="tmp"/>
+
+        <field name="maxfilesize" type="text" label="COM_VISFORMS_FILE_UPLOADED_MAX_SIZE"
+               description="COM_VISFORMS_FILE_UPLOADED_MAX_SIZE_DESC" class="inputbox" size="32" maxlength="32"/>
+
+        <field name="allowedextensions" type="text" label="COM_VISFORMS_UPLOADED_FILE_ALLOWED_EXTENSIONS"
+               description="COM_VISFORMS_UPLOADED_FILE_ALLOWED_EXTENSIONS_DESC" class="inputbox" size="50"
+               maxlength="250"
+               default="bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,BMP,CSV,DOC,GIF,ICO,JPG,JPEG,ODG,ODP,ODS,ODT,PDF,PNG,PPT,SWF,TXT,XCF,XLS"/>
+        <field name="savemode" type="list"
+               class="inputbox"
+               label="COM_VISFORMS_UPLOAD_SECURITY_LEVEL"
+               description="COM_VISFORMS_UPLOAD_SECURITY_LEVEL_DESC"
+               default="0"
+        >
+            <option value="0">COM_VISFORMS_HIGH</option>
+            <option value="1">COM_VISFORMS_LOW</option>
+        </field>
+        <field type="spacer" name="creditsspacerhr" hr="true"/>
+        <field name="poweredby" type="radio"
+               class="btn-group btn-group-yesno switcher"
+               label="COM_VISFORMS_DISPLAY_POWERED_BY"
+               description="COM_VISFORMS_DISPLAY_POWERED_BY_DESC"
+               default="0"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+    </fieldset>
+    <fieldset name="visform-frontend-details" label="COM_VISFORMS_FIELDSET_FRONTEND">
+        <fields name="frontendsettings">
+            <field name="subexists" type="aef" feature="12" default="0"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field name="minsub310" type="aef" feature="12" default="0" version="3.1.0"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field name="minsub312" type="aef" feature="12" default="0" version="3.1.2"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field name="minsub340" type="aef" feature="12" default="0" version="3.4.0"
+                   addfieldpath="components/com_visforms/models/fields"/>
+            <field name="allowfedv" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_ALLOW_FRONTEND_DATA_VIEW"
+                   description="COM_VISFORMS_ALLOW_FRONTEND_DATA_VIEW_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="ownrecordsonly" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_FRONTEND_DATA_VIEW_OWN_RECORDS_ONLY_LABEL"
+                   description="COM_VISFORMS_FRONTEND_DATA_VIEW_OWN_RECORDS_ONLY_DESCR"
+                   default="0"
+                   showon="subexists:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="frontendaccess" type="accesslevel"
+                   label="COM_VISFORMS_FRONTEND_ACCESS_LEVEL" description="COM_VISFORMS_FRONTEND_ACCESS_LEVEL_DESC"
+                   class="inputbox" size="1" default="1"
+            />
+            <field name="displaycounter" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_DISPLAY_COUNTER_IN_LIST"
+                   description="COM_VISFORMS_DISPLAY_COUNTER_IN_LIST_DESC"
+                   default="0"
+                   showon="minsub310:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="displayip" type="list"
+                   label="COM_VISFORMS_DISPLAY_IP"
+                   description="COM_VISFORMS_DISPLAY_IP_DESC"
+                   default="0"
+            >
+                <option value="0">COM_VISFORMS_FIELD_FRONTDISPLAY_NONE</option>
+                <option value="1">COM_VISFORMS_FIELD_FRONTDISPLAY_BOTH</option>
+                <option value="2">COM_VISFORMS_FIELD_FRONTDISPLAY_LIST_ONLY</option>
+                <option value="3">COM_VISFORMS_FIELD_FRONTDISPLAY_DETAIL_ONLY</option>
+            </field>
+            <field name="displayid" type="list"
+                   label="COM_VISFORMS_DISPLAY_ID"
+                   description="COM_VISFORMS_DISPLAY_ID_DESC"
+                   default="0"
+            >
+                <option value="0">COM_VISFORMS_FIELD_FRONTDISPLAY_NONE</option>
+                <option value="1">COM_VISFORMS_FIELD_FRONTDISPLAY_BOTH</option>
+                <option value="2">COM_VISFORMS_FIELD_FRONTDISPLAY_LIST_ONLY</option>
+                <option value="3">COM_VISFORMS_FIELD_FRONTDISPLAY_DETAIL_ONLY</option>
+            </field>
+            <field name="displaycreated" type="list"
+                   label="COM_VISFORMS_DISPLAY_CREATED"
+                   description="COM_VISFORMS_DISPLAY_CREATED_DESCR"
+                   default="0"
+            >
+                <option value="0">COM_VISFORMS_FIELD_FRONTDISPLAY_NONE</option>
+                <option value="1">COM_VISFORMS_FIELD_FRONTDISPLAY_BOTH</option>
+                <option value="2">COM_VISFORMS_FIELD_FRONTDISPLAY_LIST_ONLY</option>
+                <option value="3">COM_VISFORMS_FIELD_FRONTDISPLAY_DETAIL_ONLY</option>
+            </field>
+            <field name="displaycreatedtime" type="list"
+                   label="COM_VISFORMS_DISPLAY_CREATED_TIME"
+                   description="COM_VISFORMS_DISPLAY_CREATED_TIME_DESCR"
+                   default="0"
+            >
+                <option value="0">COM_VISFORMS_FIELD_FRONTDISPLAY_NONE</option>
+                <option value="1">COM_VISFORMS_FIELD_FRONTDISPLAY_BOTH</option>
+                <option value="2">COM_VISFORMS_FIELD_FRONTDISPLAY_LIST_ONLY</option>
+                <option value="3">COM_VISFORMS_FIELD_FRONTDISPLAY_DETAIL_ONLY</option>
+            </field>
+            <field name="displayismfd" type="list"
+                   label="COM_VISFORMS_DISPLAY_ISMFD"
+                   description="COM_VISFORMS_DISPLAY_ISMFD_DESC"
+                   default="0"
+            >
+                <option value="0">COM_VISFORMS_FIELD_FRONTDISPLAY_NONE</option>
+                <option value="1">COM_VISFORMS_FIELD_FRONTDISPLAY_BOTH</option>
+                <option value="2">COM_VISFORMS_FIELD_FRONTDISPLAY_LIST_ONLY</option>
+                <option value="3">COM_VISFORMS_FIELD_FRONTDISPLAY_DETAIL_ONLY</option>
+            </field>
+            <field name="displaymodifiedat" type="list"
+                   label="COM_VISFORMS_DISPLAY_MODIFIED_AT"
+                   description="COM_VISFORMS_DISPLAY_MODIFIED_AT_DESCR"
+                   default="0"
+            >
+                <option value="0">COM_VISFORMS_FIELD_FRONTDISPLAY_NONE</option>
+                <option value="1">COM_VISFORMS_FIELD_FRONTDISPLAY_BOTH</option>
+                <option value="2">COM_VISFORMS_FIELD_FRONTDISPLAY_LIST_ONLY</option>
+                <option value="3">COM_VISFORMS_FIELD_FRONTDISPLAY_DETAIL_ONLY</option>
+            </field>
+            <field name="displaymodifiedattime" type="list"
+                   label="COM_VISFORMS_DISPLAY_MODIFIED_AT_TIME"
+                   description="COM_VISFORMS_DISPLAY_MODIFIED_AT_TIME_DESCR"
+                   default="0"
+            >
+                <option value="0">COM_VISFORMS_FIELD_FRONTDISPLAY_NONE</option>
+                <option value="1">COM_VISFORMS_FIELD_FRONTDISPLAY_BOTH</option>
+                <option value="2">COM_VISFORMS_FIELD_FRONTDISPLAY_LIST_ONLY</option>
+                <option value="3">COM_VISFORMS_FIELD_FRONTDISPLAY_DETAIL_ONLY</option>
+            </field>
+            <field name="displaydetail" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_DISPLAY_DATA_DETAIL"
+                   description="COM_VISFORMS_DISPLAY_DATA_DETAIL_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="hideemptyfieldsindetail" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_HIDE_EMPTY_FIELDS_IN_DATA_DETAIL"
+                   description="COM_VISFORMS_HIDE_EMPTY_FIELDS_IN_DATA_DETAIL_DESC"
+                   default="0"
+                   showon="subexists:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="detailcaliszero" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_EMPTY_CAL_IS_ZERO_FIELDS_LABEL"
+                   description="COM_VISFORMS_EMPTY_CAL_IS_ZERO_FIELDS_DESC"
+                   default="0"
+                   showon="minsub312:1[AND]hideemptyfieldsindetail:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="frontdetailtitle" type="text" label="COM_VISFORMS_FRONTEND_DATADETAIL_TITLE"
+                   description="COM_VISFORMS_FRONTEND_DATADETAIL_TITLE_DESC" class="inputbox" size="50" maxlength="250"/>
+            <field name="detaillinkitem" type="radio" label="COM_VISFORMS_DATA_DETAIL_LINK_ICON_LABEL"
+                description="COM_VISFORMS_DATA_DETAIL_LINK_ICON_DESC" default="download">
+                <option value="download">COM_VISFORMS_ICON_DOWNLOAD</option>
+                <option value="eye">COM_VISFORMS_ICON_EYE</option>
+
+            </field>
+            <field name="displaypdfexportbutton" type="list"
+                   label="COM_VISFORMS_DISPLAY_PDF_EXPORT_BUTTON"
+                   description="COM_VISFORMS_DISPLAY_PDF_EXPORT_BUTTON_DESCR"
+                   default="0"
+                   showon="minsub340:1"
+            >
+                <option value="0">COM_VISFORMS_FIELD_FRONTDISPLAY_NONE</option>
+                <option value="1">COM_VISFORMS_FIELD_FRONTDISPLAY_BOTH</option>
+                <option value="2">COM_VISFORMS_FIELD_FRONTDISPLAY_LIST_ONLY</option>
+                <option value="3">COM_VISFORMS_FIELD_FRONTDISPLAY_DETAIL_ONLY</option>
+            </field>
+            <field name="singleRecordPdfTemplate" type="selectfromdb" label="COM_VISFORMS_FRONTEND_SINGLE_RECORD_PDF_TEMPLATE"
+                   description="COM_VISFORMS_FRONTEND_SINGLE_RECORD_PDF_TEMPLATE_DESC" table="#__vispdf" where="published = 1" singleform="true"
+                   showon="minsub340:1[AND]displaypdfexportbutton:1,2,3">
+                <option value="">COM_VISFORMS_SELECT_PDF_TEMPLATE</option>
+            </field>
+            <field name="listPdfTemplate" type="selectfromdb" label="COM_VISFORMS_FRONTEND_LIST_PDF_TEMPLATE"
+                   description="COM_VISFORMS_LIST_RECORD_PDF_TEMPLATE_DESC" table="#__vispdf" where="published = 1" singleform="true"
+                   showon="minsub340:1[AND]displaypdfexportbutton:1,2,3">
+                <option value="">COM_VISFORMS_SELECT_PDF_TEMPLATE</option>
+            </field>
+            <field name="display_csv_export_button" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_DISPLAY_CSV_EXPORT_BUTTON"
+                   description="OOM_VISFORMS_DISPLAY_CSV_EXPORT_BUTTON_DESCR"
+                   default="0"
+                   showon="subexists:1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+
+            <field name="autopublish" type="radio"
+                   class="btn-group btn-group-yesno switcher"
+                   label="COM_VISFORMS_AUTO_PUBLISH_DATA"
+                   description="COM_VISFORMS_AUTO_PUBLISH_DATA_DESC"
+                   default="0"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+
+        </fields>
+        <field name="fronttitle" type="text" label="COM_VISFORMS_FRONTEND_DATALIST_TITLE"
+               description="COM_VISFORMS_DATALIST_TITLE_DESC" class="inputbox" size="50" maxlength="250"/>
+        <field name="frontdescription" type="editor" class="inputbox"
+               label="COM_VISFORMS_DESCRIPTION" description="COM_VISFORMS_DATALIST_DESCRIPTION_DESC" buttons="true"
+               hide="module,pagebreak,visformfields,readmore" editor="tinyMCE|none"
+               filter="JComponentHelper::filterText"/>
+
+    </fieldset>
+    <fieldset name="access-rules" label="COM_VISFORMS_FIELDSET_FORM_RULES">
+        <field name="asset_id" type="hidden" filter="unset"/>
+        <field name="rules"
+               type="rules"
+               label="JFIELD_RULES_LABEL"
+               translate_label="false"
+               filter="rules"
+               validate="rules"
+               class="inputbox"
+               component="com_visforms"
+               section="visform"
+        />
+    </fieldset>
+</form>

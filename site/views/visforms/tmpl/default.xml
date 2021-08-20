@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_VISFORMS_VISFORMS_VIEW_DEFAULT_TITLE" option="COM_VISFORMS_VISFORMS_VIEW_DEFAULT_OPTION">
+		<message>
+			<![CDATA[COM_VISFORMS_VISFORMS_VIEW_DEFAULT_DESC]]>
+		</message>
+	</layout>
+	<!-- Add fields to the request variables for the layout. -->
+	<fields name="request">
+    <fieldset name="request"
+	addfieldpath="administrator/components/com_visforms/models/fields"
+	>
+     
+	  <field name="id" type="modal_visforms"
+				description="COM_VISFORMS_CHOOSE_FORM_DESC"
+				label="COM_VISFORMS_CHOOSE_FORM"
+				required="true"
+			/>
+    </fieldset>
+  </fields>  
+</metadata>

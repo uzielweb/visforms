@@ -1,0 +1,1 @@
+ALTER TABLE `#__visfields` ADD COLUMN `rdtparamname` text;

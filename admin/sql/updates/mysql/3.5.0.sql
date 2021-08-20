@@ -1,0 +1,1 @@
+ALTER TABLE `#__visfields` ADD COLUMN `bootstrap_size` tinyint(3) UNSIGNED NOT NULL default 0;

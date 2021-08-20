@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_VISFORMS_VISFORMSDATA_VIEW_DEFAULT_TITLE" option="COM_VISFORMS_VISFORMSDATA_VIEW_DATA_OPTION">
+        <message>
+            <![CDATA[COM_VISFORMS_VISFORMSDATA_VIEW_DATA_DESC]]>
+        </message>
+    </layout>
+    <fields name="request">
+        <fieldset name="request"
+                  addfieldpath="administrator/components/com_visforms/models/fields"
+        >
+
+            <field name="id" type="modal_visdata"
+                   description="COM_VISFORMS_CHOOSE_FORM_DESC"
+                   label="COM_VISFORMS_CHOOSE_FORM"
+                   required="true"
+            />
+            <field name="layout"
+                   type="hidden"
+                   default="data"
+            />
+        </fieldset>
+    </fields>
+
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic" label="COM_VISFORMS_ATTRIB_VISFORMSDATA_SETTINGS"
+                      addfieldpath="administrator/components/com_visforms/models/fields"
+            >
+                <field name="sbexists" type="aef" feature="8" default="0"
+                       addfieldpath="components/com_visforms/models/fields"/>
+                <field name="minsub321" type="aef" feature="12" default="0" version="3.2.1"
+                       addfieldpath="components/com_visforms/models/fields"/>
+                <field name="orientation" type="list" default="0"
+                       label="COM_VISFORMS_DATA_ORIENTATION_LABEL" description="COM_VISFORMS_DATA_ORIENTATION_DESCR"
+                       showon="minsub321:1">
+                    <option value="0">COM_VISFORMS_INLINE</option>
+                    <option value="1">COM_VISFORMS_AS_LIST</option>
+                </field>
+                <field name="fieldorder" type="list" default=""
+                       label="COM_VISFORMS_ORDER_FIELDS_BY_DATA_ORDERING_LABEL"
+                       description="COM_VISFORMS_ORDER_FIELDS_BY_DATA_ORDERING_DESCR"
+                       showon="minsub321:1">
+                    <option value="">COM_VISFORMS_FROM_FORM_ORDER</option>
+                    <option value="dataordering">COM_VISFORMS_FROM_DATA_ORDER</option>
+                </field>
+                <field name="show_columnheader" type="radio"
+                       class="btn-group btn-group-yesno switcher"
+                       default="1" label="COM_VISFORMS_SHOW_COLUMN_HEADERS"
+                       description="COM_VISFORMS_SHOW_COLUMN_HEADERS_DESCR">
+                    <option value="0">COM_VISFORMS_HIDE</option>
+                    <option value="1">COM_VISFORMS_SHOW</option>
+                </field>
+                <field name="show_tableborder" type="radio" default="1"
+                       class="btn-group btn-group-yesno switcher" label="COM_VISFORMS_SHOW_TABLE_BORDERS"
+                       description="COM_VISFORMS_SHOW_TABLE_BORDERS_DESC">
+                    <option value="0">COM_VISFORMS_HIDE</option>
+                    <option value="1">COM_VISFORMS_SHOW</option>
+                </field>
+                <field name="show_filter" type="radio"
+                       class="btn-group btn-group-yesno switcher"
+                       label="COM_VISFORMS_SHOW_FILTER_LABEL"
+                       description="COM_VISFORMS_SHOW_FILTER_DESCR"
+                       default="0"
+                       showon="sbexists:1"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="show_filter_created" type="radio"
+                       class="btn-group btn-group-yesno switcher"
+                       label="COM_VISFORMS_SHOW_FILTER_CREATED_LABEL"
+                       description="COM_VISFORMS_SHOW_FILTER_CREATED_DESCR"
+                       default="0"
+                       showon="show_filter:1"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="display_num" type="list"
+                       default="20"
+                       description="COM_VISFORMS_NUMBER_DATA_LIST_DESCR"
+                       label="COM_VISFORMS_NUMBER_DATA_LIST_LABEL">
+                    <option value="5">J5</option>
+                    <option value="10">J10</option>
+                    <option value="15">J15</option>
+                    <option value="20">J20</option>
+                    <option value="25">J25</option>
+                    <option value="30">J30</option>
+                    <option value="50">J50</option>
+                    <option value="100">J100</option>
+                    <option value="0">JALL</option>
+                </field>
+                <field name="sortorder"
+                       type="visdatasortorder"
+                       label="COM_VISFORMS_VIEW_VISDATA_SORTORDER"
+                       description="COM_VISFORMS_VIEW_VISDATA_SORTORDER_DESC"
+                       addfieldpath="/administrator/components/com_visforms/models/fields"
+                />
+                <field name="sortdirection"
+                       type="list"
+                       label="JGLOBAL_SORT_BY"
+                >
+                    <option value="ASC">JGLOBAL_ORDER_ASCENDING</option>
+                    <option value="DESC">JGLOBAL_ORDER_DESCENDING</option>
+                </field>
+                <field name="viewclass" type="text"
+                       label="COM_VISFORMS_TABLE_CSS_CLASS"
+                       description="COM_VISFORMS_TABLE_CSS_CLASS_DESCR"
+                       default=""
+                />
+            </fieldset>
+        </fields>
+    </config>
+</metadata>

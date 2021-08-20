@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <!-- form name and title -->
+    <fieldset name="form_title">
+        <field name="title" type="text" label="COM_VISFORMS_FORM_TITLE" hint="COM_VISFORMS_CREATOR_FIELD_FORM_TITLE_HINT"
+               description="COM_VISFORMS_TITLE_DESC" class="inputbox input-xxlarge" size="50"
+               maxlength="250" required="true"/>
+        <field name="name" type="text" label="COM_VISFORMS_FORM_NAME" hint="COM_VISFORMS_CREATOR_FIELD_FORM_NAME_HINT"
+               description="COM_VISFORMS_FORM_NAME_DESC" class="inputbox" size="50" maxlength="50"
+               required="true"/>
+    </fieldset>
+    <fieldset name="form_basics">
+        <field name="subexists" type="aef" feature="12" default="0"
+               addfieldpath="components/com_visforms/models/fields"/>
+        <field name="saveresult" type="radio"
+               class="btn-group btn-group-yesno"
+               label="COM_VISFORMS_SAVE_RESULT"
+               description="COM_VISFORMS_SAVE_RESULT_DESC"
+               default="1"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field name="allowfedv" type="radio"
+               class="btn-group btn-group-yesno"
+               label="COM_VISFORMS_CREATOR_ALLOW_FRONTEND_DATA_VIEW_LABEL"
+               description="COM_VISFORMS_ALLOW_FRONTEND_DATA_VIEW_DESC"
+               default="0"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field name="ownrecordsonly" type="radio"
+               class="btn-group btn-group-yesno"
+               label="COM_VISFORMS_FRONTEND_DATA_VIEW_OWN_RECORDS_ONLY_LABEL"
+               description="COM_VISFORMS_FRONTEND_DATA_VIEW_OWN_RECORDS_ONLY_DESCR"
+               default="0"
+               showon="subexists:1"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+    </fieldset>
+    <fieldset name="miscellaneous">
+        <field name="count-example-data" type="number" default="10" first="0" last="" step="10" hint="" min="0"
+               label="COM_VISFORMS_CREATOR_CREATE_DATA_COUNT_LABEL" description="COM_VISFORMS_CREATOR_CREATE_DATA_COUNT_DESC"/>
+    </fieldset>
+</form>

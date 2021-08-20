@@ -1,0 +1,1 @@
+ALTER TABLE `#__visforms` ADD COLUMN `savemode` tinyint(1) NOT NULL default 0;

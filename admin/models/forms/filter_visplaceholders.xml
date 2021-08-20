@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="filter">
+		<field
+			name="search"
+			type="text"
+			label="COM_VISFORMS_FILTER_SEARCH_DESC"
+			hint="JSEARCH_FILTER"
+		/>
+		<field
+			name="published"
+			type="list"
+			label="COM_VISFORMS_FILTER_PUBLISHED"
+			description="COM_VISFORMS_FILTER_PUBLISHED_DESC"
+			onchange="this.form.submit();"
+			>
+			<option value="">JOPTION_SELECT_PUBLISHED</option>
+            <option value="1">
+					JPUBLISHED</option>
+				<option value="0">
+					JUNPUBLISHED</option>
+		</field>
+	</fields>
+    <fields name="list">
+		<field
+			name="fullordering"
+			type="Visfieldsortorder"
+			label="COM_VISFORMS_LIST_FULL_ORDERING"
+			description="COM_VISFORMS_LIST_FULL_ORDERING_DESC"
+			onchange="this.form.submit();"
+			default="a.id ASC"
+			>
+			<option value="">JGLOBAL_SORT_BY</option>
+            <option value="a.ordering ASC">JGRID_HEADING_ORDERING_ASC</option>
+			<option value="a.ordering DESC">JGRID_HEADING_ORDERING_DESC</option>
+			<option value="a.published ASC">JSTATUS_ASC</option>
+			<option value="a.published DESC">JSTATUS_DESC</option>
+			<option value="a.label ASC">COM_VISFORMS_LABEL_ASC</option>
+			<option value="a.label DESC">COM_VISFORMS_LABEL_DESC</option>
+			<option value="a.id ASC">JGRID_HEADING_ID_ASC</option>
+			<option value="a.id DESC">JGRID_HEADING_ID_DESC</option>
+            <option value="a.typefield ASC">COM_VISFORMS_TYPEFIELD_ASC</option>
+			<option value="a.typefield DESC">COM_VISFORMS_TYPEFIELD_DESC</option>
+		</field>
+		<field
+			name="limit"
+			type="limitbox"
+			class="inputbox input-mini"
+			default="25"
+			label="COM_VISFORMS_LIST_LIMIT"
+			description="COM_VISFORMS_LIST_LIMIT_DESC"
+			onchange="this.form.submit();"
+		/>
+	</fields>
+</form>

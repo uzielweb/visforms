@@ -1,0 +1,11 @@
+ALTER TABLE `#__visfields` ADD COLUMN `useoptionvalueinplaceholder` tinyint(1) NOT NULL default 0;
+ALTER TABLE `#__visfields` ADD COLUMN `customlabelformail` text;
+ALTER TABLE `#__visfields` ADD COLUMN `customlabelforcsv` text;
+ALTER TABLE `#__visfields` ADD COLUMN `fileexportformat` tinyint(1) NOT NULL default 0;
+ALTER TABLE `#__visfields` ADD COLUMN `displayAsMapInList` tinyint(1) NOT NULL default 0;
+ALTER TABLE `#__visfields` ADD COLUMN `displayAsMapInDetail` tinyint(1) NOT NULL default 0;
+ALTER TABLE `#__visfields` ADD COLUMN `listMapHeight` char(10) NOT NULL default '';
+ALTER TABLE `#__visfields` ADD COLUMN `detailMapHeight` char(10) NOT NULL default '';
+ALTER TABLE `#__visfields` ADD COLUMN `listMapZoom` int(11) NOT NULL default 8;
+ALTER TABLE `#__visfields` ADD COLUMN `detailMapZoom` int(11) NOT NULL default 13;
+ALTER TABLE `#__visforms` ADD COLUMN `subredirectsettings` text;
