@@ -1,1 +1,0 @@
-ALTER TABLE `#__visforms` ADD COLUMN `savesettings` text;

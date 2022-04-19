@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE extension>
+<extension type="package" version="3.9.0" method="upgrade">
+	<name>pkg_vfbase</name>
+	<packagename>vfbase</packagename>
+	<version>3.0.4</version>
+	<loggerName>vfbase</loggerName>
+	<creationDate>February 2022</creationDate>
+	<author>Aicha Vack, vi-solutions</author>
+	<authorEmail>contact@vi-solutions.de</authorEmail>
+	<authorUrl>https://www.vi-solutions.de</authorUrl>
+	<copyright>Copyright (C) vi-solutions. All rights reserved.</copyright>
+	<license>GNU/GPLv3 or later</license>
+	<description>PKG_VFBASE_PACKAGE_DESCRIPTION</description>
+	<scriptfile>script.php</scriptfile>
+	<files folder="packages">
+		<file type="component"               id="com_visforms">com_visforms_j3.9.0_3.14.10.zip</file>
+		<file type="plugin" group="visforms" id="visforms">visformsvisforms_j3.9.0_1.3.3.zip</file>
+		<file type="plugin" group="actionlog"  id="visforms">visformsactionlog_j3.9.0_1.0.2.zip</file>
+		<file type="plugin" group="privacy" id="visforms">visformsprivacy_j3.9.0_1.0.2.zip</file>
+		<file type="plugin" group="visforms" id="spambotcheck">spambotcheck_j3.9.0_3.6.2.zip</file>
+		<file type="plugin" group="editors-xtd" id="visformfields">visformfields_j3.9.0_3.6.1.zip</file>
+		<file type="library"   id="visolutions">visolutionslibrary_j3.9.0_1.6.2.zip</file>
+		<file type="module"   client="site" id="mod_visforms">mod_visforms_j3.9.0_3.17.5.zip</file>
+	</files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.pkg_vfbase.sys.ini</language>
+		<language tag="en-GB">en-GB/en-GB.pkg_vfbase.ini</language>
+		<language tag="de-DE">de-DE/de-DE.pkg_vfbase.sys.ini</language>
+		<language tag="de-DE">de-DE/de-DE.pkg_vfbase.ini</language>
+	</languages>
+	<updateservers>
+		<server type="extension" priority="1" name="vfbase">https://vi-solutions.de/updates/visforms/extension_vfbase.xml</server>
+	</updateservers>
+</extension>
